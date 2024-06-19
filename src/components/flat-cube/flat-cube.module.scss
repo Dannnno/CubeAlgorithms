@@ -1,0 +1,54 @@
+.flatCube {
+	margin: 0;
+	$value-size: 4ch;
+	border: 1px solid black;
+	display: grid;
+	--block-size: calc(var(--side-size) * #{$value-size} + 3);
+	grid-template-columns: repeat(4, var(--block-size));
+	grid-template-rows: repeat(3, var(--block-size));
+	grid-template-areas:
+		".	s1	.	."
+		"s4	s2	s5	s6"
+		".	s3	.	.";
+	row-gap: 5px;
+	column-gap: 5px;
+	font-family: monospace;
+
+	.cubeSide {
+		@for $i from 1 through 6 {
+			&:nth-child(#{$i}) {
+				grid-column-start: s#{$i};
+				grid-row-start: s#{$i};
+			}
+		}
+
+		&:hover {
+			& .cubeValue {
+				color: var(--block-text-color, "black");
+			}
+		}
+
+		margin: 0;
+		display: grid;
+		grid-template-columns: repeat(var(--side-size), $value-size);
+		grid-template-rows: repeate(var(--side-size), $value-size);
+		border: 1px solid black;
+		font-family: monospace;
+
+		.cubeValue {
+			margin: 0;
+			min-width: $value-size;
+			max-width: $value-size;
+			min-height: $value-size;
+			max-height: $value-size;
+			border: 1px solid black;
+			color: var(--block-color);
+			background-color: var(--block-color);
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-family: monospace;
+		}
+	}
+}
