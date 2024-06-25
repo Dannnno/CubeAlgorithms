@@ -8,7 +8,7 @@ import Cube from "./models/geometry.ts";
 const App: React.FC<{}> = () => {
   const [count, setCount] = useState(0)
   const increment = useCallback(() => setCount(count => count + 1));
-  const cube = new Cube(3);
+  const [cube, setCube] = useState(new Cube(3));
 
   return (
     <>
